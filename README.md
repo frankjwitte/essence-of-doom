@@ -7,6 +7,10 @@ There are no textures, no sprites and no 3D. The geometry, thing placement, door
 floors, monster wake-up rules, 8-direction chase logic, attacks and weapon timings all come from
 DOOM's data and rules.
 
+The original brief is in [docs/brief.md](docs/brief.md). The specs, design decisions and history
+are in [openspec/](openspec/): see `project.md`, `specs/*/spec.md`, and `changes/archive/` for the
+proposal, design and tasks of each change.
+
 ## Run
 
 ```
