@@ -92,7 +92,7 @@ brought it to about 1 s per minute. It was added only after measuring the proble
 ### Verification without a human playtester
 - The tests play the real E1M1 through `Game.Update`, including a flood fill that proves the exit is
   reachable from the start under the actual collision rules.
-- The `--shot`, `--at x,y`, `--fire` and `--overview` developer flags render the real window and save a screenshot.
+- The `--shot <file>`, `--shot-tic <n>`, `--at x,y`, `--fire` and `--overview` developer flags render the real window and save a screenshot at a chosen tic. They also produced the README images: `--at 3067,-3317 --fire --shot-tic 60`, and the same with `--overview --shot-tic 90`.
 - One run drove the real window with synthetic Win32 keyboard and mouse input to confirm the full input path.
 
 ## Risks / Trade-offs

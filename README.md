@@ -2,6 +2,11 @@
 
 An experiment: how much can be removed from DOOM before it stops feeling like DOOM?
 
+![E1M1's zig-zag nukage room on Ultra-Violence: shotgun guys and imps wake up and close in, with hitscan tracers flying](docs/images/teaser.png)
+
+*One second after walking into E1M1's zig-zag nukage room on Ultra-Violence. Hollow grey shapes
+are still asleep. Red ones are awake and hunting. Dark red ones are about to fire. The red lines are their shots.*
+
 It loads the real map data from `DOOM1.WAD` and plays E1M1 as a flat, top-down line drawing.
 There are no textures, no sprites and no 3D. The geometry, thing placement, doors, lift, damaging
 floors, monster wake-up rules, 8-direction chase logic, attacks and weapon timings all come from
@@ -36,6 +41,8 @@ Options: `--map E1M1`, `--skill 1-5` (default 4, Ultra-Violence: 29 monsters on 
 | H | hide the help line |
 
 ## Reading the drawing
+
+![The whole of E1M1 in overview mode (Tab), with the awake monsters clustered around the player](docs/images/overview.png)
 
 - **Black lines**: walls. **Dark grey**: ledges you can only drop down from, and impassable railings or windows. **Light grey**: walkable steps.
 - **Brown lines, tan fill**: doors (the fill disappears as the door opens). Keyed doors take the key's colour.

@@ -11,7 +11,8 @@ public static class Program
         string? wadArg = null;
         string map = "E1M1";
         int skill = 4;
-        string? shotPath = null; // dev aid: save a screenshot after a couple of seconds and quit
+        string? shotPath = null; // dev aid: save a screenshot after --shot-tic tics (default 2 s) and quit
+        int shotTic = 70;
         bool overview = false, autoFire = false; // more dev aids for screenshots
         Vec2? startAt = null;
         for (int i = 0; i < args.Length; i++)
@@ -22,6 +23,7 @@ public static class Program
                 case "--map" when i + 1 < args.Length: map = args[++i].ToUpperInvariant(); break;
                 case "--skill" when i + 1 < args.Length: skill = Math.Clamp(int.Parse(args[++i]), 1, 5); break;
                 case "--shot" when i + 1 < args.Length: shotPath = args[++i]; break;
+                case "--shot-tic" when i + 1 < args.Length: shotTic = int.Parse(args[++i]); break;
                 case "--overview": overview = true; break;
                 case "--fire": autoFire = true; break;
                 case "--at" when i + 1 < args.Length:
@@ -58,7 +60,6 @@ public static class Program
         var game = new Game(level, skill, Environment.TickCount);
         if (startAt is Vec2 at) game.Player.Mo.Pos = game.Player.Mo.PrevPos = at;
         var renderer = new Renderer(game) { Overview = overview };
-        int frames = 0;
         double accumulator = 0;
         const double dt = 1.0 / Game.TicRate;
         bool usePressed = false;
@@ -105,7 +106,7 @@ public static class Program
             Raylib.BeginDrawing();
             renderer.Draw(alpha, mouse);
             Raylib.EndDrawing();
-            if (shotPath != null && ++frames == 120)
+            if (shotPath != null && game.Tick >= shotTic)
             {
                 Raylib.TakeScreenshot(shotPath);
                 break;
